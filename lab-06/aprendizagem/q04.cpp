@@ -1,7 +1,6 @@
 /*
 Altere o programa para que o resultado seja exibido corretamente tanto no cálculo
-direto quanto no cálculo feito através da função. Explique o porquê dessa
-diferença.
+direto quanto no cálculo feito através da função.
 
 #include <iostream>
 using namespace std;
