@@ -7,6 +7,12 @@ simbólica para representar o número de segundos em um ano.
 Digite sua idade em anos: 25
 25 anos correspondem a 7.89e+008 segundos.
 
+O cout vai passar o valor para notação exponencial sempre que o resultado não
+puder ser exibido com 6 dígitos significativos. Utilize cout.setf() e cout.precision()
+para exibir o valor em formato decimal com apenas uma casa depois da vírgula.
+
+25 anos correspondem a 789000000.0 segundos.
+
 */
 
 #include <iostream>
@@ -26,9 +32,12 @@ int main()
 	cout << "Digite sua idade em anos: ";
 	cin >> idade;
 
-	cout.setf(ios_base::scientific, ios_base::floatfield);
 	cout << idade << " anos correspondem a " << segundos(idade) << " segundos." << endl;
-	cout.precision(56);
+
+	cout.setf(ios_base::fixed, ios_base::floatfield);
+	cout.precision(1);
+
+	cout << idade << " anos correspondem a " << segundos(idade) << " segundos." << endl;
 	return 0;
 }
 
