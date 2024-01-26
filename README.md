@@ -13,4 +13,4 @@ This repository is were i am gonna put all my c++ code and exercices
 * Lab 09: Arithmetic Operators | Type Conversions | Type Cast
 * Lab 10: Vectors | Const vs Constexpr | Vector and Array
 * Lab 11: Strings | Character Vectors | String Type
-* Lab 12: Records | Structure | Type Creation | Record Vectors
+* Lab 12: Records | Structs | Type Creation | Record Vectors
