@@ -15,3 +15,4 @@ This repository is were i am gonna put all my c++ code and exercices
 * Lab 11: Strings | Character Vectors | String Type
 * Lab 12: Records | Structs | Type Creation | Record Vectors
 * Lab 13: Unions and Enumerations | Union vs Struct | Enumerations with Scope
+* Lab 14: Pointers | Memory Pointer | Address and Indirection Operator
