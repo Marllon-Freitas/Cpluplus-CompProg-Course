@@ -17,3 +17,4 @@ This repository is were i am gonna put all my c++ code and exercices
 * Lab 13: Unions and Enumerations | Union vs Struct | Enumerations with Scope
 * Lab 14: Pointers | Memory Pointer | Address and Indirection Operator
 * Lab 15: Dynamic Memory Allocation | new and delete Operators | Dynamic Arrays
+* Lab 16: For Loop | Difference between Expression and Instruction
