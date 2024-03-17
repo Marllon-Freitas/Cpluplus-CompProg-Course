@@ -26,7 +26,6 @@ istream& operator >> (istream& input, horario& horarioLido)
 
 ostream& operator<<(ostream& os, horario& h)
 {
-	//exibir hora no formato hh:mm, caso a hora ou minuto tenha apenas um dígito, exibir um zero a esquerda
 	if (h.hora < 10)
 	{
 		os << "0";
