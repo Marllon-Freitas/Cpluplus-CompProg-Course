@@ -20,3 +20,4 @@ This repository is were i am gonna put all my c++ code and exercices
 * Lab 16: For Loop | Difference between Expression and Instruction
 * Lab 17: For Loop Applications | Comma Operator | Increment and Decrement
 * Lab 18: While and Do-While Loops | Comparison of Strings and Floating Points
+* Lab 19: Applications of Loops | Dynamic Matrices | Do While
