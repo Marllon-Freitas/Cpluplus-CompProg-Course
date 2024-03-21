@@ -27,7 +27,14 @@ Antônio Souza 10000
 Patronos
 Carlos Bezerra 200
 Pedro Neto 3000
+
+Se não existir doadores em uma das categorias, o programa deve exibir a palavra
+“nenhum”. Não é preciso fazer a ordenação das doações, basta exibi-las em duas
+categorias.
 */
+
+#include <iostream>
+using namespace std;
 
 struct contribuinte
 {
@@ -35,12 +42,10 @@ struct contribuinte
   int valorDoado;
 };
 
-#include <iostream>
-using namespace std;
-
 int main()
 {
   int tamanhoVetor = 0;
+  bool temGrandePatronos = false, temPatronos = false;
   cout << "Digite o número de contribuintes: ";
   cin >> tamanhoVetor;
   contribuinte *doadores = new contribuinte[tamanhoVetor];
@@ -60,8 +65,14 @@ int main()
   {
     if (doadores[i].valorDoado >= 10000)
     {
+      temGrandePatronos = true;
       cout << doadores[i].nome << " " << doadores[i].valorDoado << endl;
     }
+  }
+
+  if (!temGrandePatronos)
+  {
+    cout << "nenhum" << endl;
   }
 
   cout << "Patronos" << endl;
@@ -69,8 +80,14 @@ int main()
   {
     if (doadores[i].valorDoado < 10000)
     {
+      temPatronos = true;
       cout << doadores[i].nome << " " << doadores[i].valorDoado << endl;
     }
+  }
+
+  if (!temPatronos)
+  {
+    cout << "nenhum" << endl;
   }
 
   delete[] doadores;
