@@ -22,3 +22,4 @@ This repository is were i am gonna put all my c++ code and exercices
 * Lab 18: While and Do-While Loops | Comparison of Strings and Floating Points
 * Lab 19: Applications of Loops | Dynamic Matrices | Do While
 * Lab 20: If | if else | Nested If | Value Range Test
+* Lab 21: Logical Operators | OR AND NOT | AND OR NOT | Conditional Test
