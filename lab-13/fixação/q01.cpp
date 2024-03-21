@@ -1,115 +1,53 @@
 /*
-Uma fábrica de automóveis define a cor de um carro por um número, um código de
-letras ou pelo nome da cor, nunca os três simultaneamente. A correspondência das
-principais cores é dada na tabela abaixo. Construa um registro para guardar
-informações sobre um carro. Um carro deve ter nome do modelo, ano de
-fabricação, cor (número, código ou nome) e preço.
+Crie um registro "Nadador" com os campos nome, idade e categoria. Na função
+principal, declare um nadador e peça ao usuário que digite o nome e a idade do
+nadador. Porém, a categoria deve ser determinada pelo programa de acordo com a
+tabela abaixo:
 
-Nome Número Código
-Preto 13302 A33B
-Azul 00828 C44E
-Amarelo 11029 JB81
-
-Em seguida construa um vetor de 10 carros inicializando os dois primeiros carros
-com as informações: "Vectra", 2009, "Azul", R$58.000,00 e "Polo", 2008, "Preto",
-R$45.000,00, respectivamente. Em seguida peça ao usuário para entrar com os
-dados de um terceiro carro e armazene-o no vetor. Finalmente o programa deve
-mostrar na tela os dados para os três carros.
-
+Categoria Idade
+Infantil 5 a 7
+Juvenil 8 a 10
+Adolescente 11 a 15
+Adulto 15 a 30
+Sênior Acima de 30
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <cstring>
 using namespace std;
 
-union cor
+struct nadador
 {
-	int numero;
-	char codigo[5];
-	char nome[30];
+	char nome[50];
+	int idade;
+	char categoria[50];
 };
-
-struct carro
-{
-	char modelo[30];
-	int ano;
-	cor cor;
-	float preco;
-};
-
-void mostrarCarros(carro[], int, int);
 
 int main()
 {
-	carro carros[10] = {};
-	int opcao;
-	strcpy(carros[0].modelo, "Vectra");
-	carros[0].ano = 2009;
-	strcpy(carros[0].cor.nome, "Azul");
-	carros[0].preco = 58000;
+	nadador n;
 
-	strcpy(carros[1].modelo, "Polo");
-	carros[1].ano = 2008;
-	strcpy(carros[1].cor.nome, "Preto");
-	carros[1].preco = 45000;
+	cout << "Digite o nome do nadador: ";
+	cin.getline(n.nome, 50);
+	cout << "Digite a idade do nadador: ";
+	cin >> n.idade;
 
-	cout << "Digite o modelo do carro: ";
-	cin >> carros[2].modelo;
-	cout << "Digite o ano do carro: ";
-	cin >> carros[2].ano;
-	cout << "Como deseja informar a cor do veiculo? " << endl;
-	cout << "1 - Número" << endl;
-	cout << "2 - Código" << endl;
-	cout << "3 - Nome" << endl;
-	cout << "Digite a opção desejada: ";
-	cin >> opcao;
-	switch (opcao)
-	{
-	case 1:
-		cout << "Digite o número da cor: ";
-		cin >> carros[2].cor.numero;
-		break;
-	case 2:
-		cout << "Digite o código da cor: ";
-		cin >> carros[2].cor.codigo;
-		break;
-	case 3:
-		cout << "Digite o nome da cor: ";
-		cin >> carros[2].cor.nome;
-		break;
-	default:
-		cout << "Opção inválida!" << endl;
-		break;
-	}
-	cout << "Digite o preço do carro: ";
-	cin >> carros[2].preco;
-	mostrarCarros(carros, 3, opcao);
+	if (n.idade >= 5 && n.idade <= 7)
+		strcpy(n.categoria, "Infantil");
+	else if (n.idade >= 8 && n.idade <= 10)
+		strcpy(n.categoria, "Juvenil");
+	else if (n.idade >= 11 && n.idade <= 15)
+		strcpy(n.categoria, "Adolescente");
+	else if (n.idade >= 15 && n.idade <= 30)
+		strcpy(n.categoria, "Adulto");
+	else if (n.idade > 30)
+		strcpy(n.categoria, "Sênior");
+	else
+		strcpy(n.categoria, "Categoria não encontrada (idade invalida)");
+
+	cout << "Nome: " << n.nome << endl;
+	cout << "Idade: " << n.idade << endl;
+	cout << "Categoria: " << n.categoria << endl;
 
 	return 0;
-}
-
-void mostrarCarros(carro carros[], int tamanho, int opcao)
-{
-	for (int i = 0; i < tamanho; i++)
-	{
-		cout << "Carro " << i + 1 << ":" << endl;
-		cout << "Modelo: " << carros[i].modelo << endl;
-		cout << "Ano: " << carros[i].ano << endl;
-		switch (opcao)
-		{
-		case 1:
-			cout << "Cor: " << carros[i].cor.numero << endl;
-			break;
-		case 2:
-			cout << "Cor: " << carros[i].cor.codigo << endl;
-			break;
-		case 3:
-			cout << "Cor: " << carros[i].cor.nome << endl;
-			break;
-		default:
-			cout << "Opção inválida!" << endl;
-			break;
-		}
-		cout << "Preço: R$" << carros[i].preco << endl;
-		cout << endl;
-	}
 }
