@@ -26,7 +26,7 @@ int main()
   fin.open("pescado.txt");
   if (!fin.is_open())
   {
-    cout << "Abertura do arquivo sol.txt falhou!" << endl;
+    cout << "Abertura do arquivo pescado.txt falhou!" << endl;
     cout << "Programa encerrando.\n";
     exit(EXIT_FAILURE);
   }
