@@ -25,3 +25,4 @@ This repository is were i am gonna put all my c++ code and exercices
 * Lab 21: Logical Operators | OR AND NOT | AND OR NOT | Conditional Test
 * Lab 22: Switch | Ternary Operator | if else break continue
 * Lab 23: Text Files | Reading and Writing Characters Words and Lines
+* Lab 24: Binary Files | Reading | Writing | Opening Modes
