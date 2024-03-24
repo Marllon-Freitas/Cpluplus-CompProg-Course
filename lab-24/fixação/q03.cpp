@@ -50,80 +50,89 @@ Texto colorido foi armazenado.
 #include <cstring>
 using namespace std;
 
-struct mensagem
+struct imagem
 {
-  char texto[80];
-  int corTexto;
-  int corFundo;
+  int largura;
+  int altura;
+  int bloco[10][10];
 };
 
 int main()
 {
+  imagem img;
+  char opcao;
+  int i, j;
+
   ifstream fin;
-  mensagem m;
-  fin.open("mensagem.bin", ios_base::in | ios_base::binary);
+  fin.open("imagem.bin", ios_base::in | ios_base::binary);
 
   if (!fin.is_open())
   {
-    cout << "Erro ao abrir o arquivo mensagem.bin" << endl;
+    cout << "Erro ao abrir o arquivo imagem.bin" << endl;
     return 1;
   }
 
-  while (fin.read((char *)&m, sizeof(mensagem)))
-  {
-    cout << m.texto << " " << m.corTexto << " " << m.corFundo << endl;
-  }
-
+  fin.read((char *)&img, sizeof(imagem));
   fin.close();
-  cout << endl;
 
   ofstream fout;
-  fout.open("mensagem.bin", ios_base::out | ios_base::app | ios_base::binary);
+  fout.open("imagem.bin", ios_base::out | ios_base::binary);
 
   if (!fout.is_open())
   {
-    cout << "Erro ao abrir o arquivo mensagem.bin" << endl;
+    cout << "Erro ao abrir o arquivo imagem.bin" << endl;
     return 1;
   }
 
-  char opcao;
-  cout << "Mensagens Coloridas" << endl;
-  cout << "-------------------" << endl;
+  cout << "Imagens Coloridas" << endl;
+  cout << "-----------------" << endl;
   cout << "[A]rmazenar" << endl;
   cout << "[E]xibir" << endl;
   cout << "[S]air" << endl;
-  cout << "-------------------" << endl;
+  cout << "-----------------" << endl;
   cout << "Opção: ";
   cin >> opcao;
 
-  if (opcao == 'A')
+  switch (opcao)
   {
-    cout << "Sua mensagem: ";
-    cin.ignore();
-    cin.getline(m.texto, 80);
+  case 'A':
+    cout << "Largura: ";
+    cin >> img.largura;
+    cout << "Altura: ";
+    cin >> img.altura;
 
-    cout << "Cor do texto: ";
-    cin >> m.corTexto;
+    for (i = 0; i < img.altura; i++)
+    {
+      cout << "Defina " << img.largura << " cores em cada linha" << endl;
+      cout << "#" << i + 1 << ": ";
+      for (j = 0; j < img.largura; j++)
+      {
+        cin >> img.bloco[i][j];
+      }
+    }
 
-    cout << "Cor do fundo: ";
-    cin >> m.corFundo;
+    fout.write((char *)&img, sizeof(imagem));
+    cout << "Imagem colorida foi armazenada." << endl;
+    break;
 
-    fout.write((char *)&m, sizeof(mensagem));
+  case 'E':
+    cout << "Imagem colorida" << endl;
+    cout << "Largura: " << img.largura << endl;
+    cout << "Altura: " << img.altura << endl;
 
-    cout << "Texto colorido foi armazenado." << endl;
-  }
-  else if (opcao == 'E')
-  {
-    cout << "Texto: " << m.texto << endl;
-    cout << "Cor do texto: " << m.corTexto << endl;
-    cout << "Cor do fundo: " << m.corFundo << endl;
-  }
-  else if (opcao == 'S')
-  {
+    for (i = 0; i < img.altura; i++)
+    {
+      for (j = 0; j < img.largura; j++)
+      {
+        cout << "\033[48;5;" << img.bloco[i][j] % 256 << "m  \033[0m";
+      }
+      cout << endl;
+    }
+    break;
+  case 'S':
     return 0;
   }
 
   fout.close();
-
   return 0;
 }
