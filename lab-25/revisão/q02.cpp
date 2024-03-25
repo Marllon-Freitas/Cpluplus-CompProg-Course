@@ -7,6 +7,10 @@ tabulações ou saltos de linha.
 
 Nome do arquivo: valores.txt
 O maior valor é 9.5
+
+Dica: como não se conhece o conteúdo do arquivo, não é possível prever quantos
+valores ele contém. Será necessário ler o arquivo duas vezes, uma para contar e
+outra para ler os elementos.
 */
 #include <iostream>
 #include <fstream>
@@ -17,10 +21,9 @@ double maiorElemento(const double[], int);
 
 int main()
 {
-  double vetor[100] = {0};
-  int i = 0;
   ifstream fin;
-  double maior = 0;
+  double valor = 0, maior = 0;
+  int i = 0, tamanho = 0;
 
   fin.open("valores.txt");
   if (!fin.is_open())
@@ -30,18 +33,27 @@ int main()
     exit(EXIT_FAILURE);
   }
 
-  if (fin.is_open())
+  while (!fin.eof())
   {
-    while (!fin.eof())
-    {
-      fin >> vetor[i];
-      i++;
-    }
-    fin.close();
+    fin >> valor;
+    tamanho++;
+  }
+  fin.close();
+
+  fin.open("valores.txt");
+
+  double *vetor = new double[tamanho];
+
+  for (i = 0; i < tamanho; i++)
+  {
+    fin >> vetor[i];
   }
 
-  maior = maiorElemento(vetor, i);
-  cout << "O maior valor e " << maior << endl;
+  fin.close();
+
+  cout << "O maior valor é " << maiorElemento(vetor, tamanho) << endl;
+
+  delete[] vetor;
 
   return 0;
 }
@@ -57,6 +69,5 @@ double maiorElemento(const double vetor[], int tamanho)
       maior = vetor[i];
     }
   }
-
   return maior;
 }
