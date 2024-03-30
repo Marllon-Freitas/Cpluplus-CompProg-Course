@@ -9,6 +9,16 @@ double soma(double x, double y)
 {
   return x * y;
 }
+
+Então a chamada de função abaixo deve fazer calcular() passar os valores 2.5 e
+10.3 para a função soma() e retornar o resultado de soma, que é 12.8 neste
+exemplo.
+
+double q = calcular(2.5, 10.3, soma);
+
+Utilize estas funções e pelo menos mais uma função semelhante a soma() no
+programa. O programa deve usar um laço que permita ao usuário digitar pares de
+valores. Para cada par, use calcular() para chamar soma() e outra função.
 */
 
 #include <iostream>
@@ -42,11 +52,37 @@ double calcular(double x, double y, double (*funcaoPassada)(double, double))
 int main()
 {
   double x, y;
-  cout << "Digite dois valores: ";
-  cin >> x >> y;
-  cout << "Soma: " << calcular(x, y, soma) << endl;
-  cout << "Subtração: " << calcular(x, y, subtracao) << endl;
-  cout << "Multiplicação: " << calcular(x, y, multiplicacao) << endl;
-  cout << "Divisão: " << calcular(x, y, divisao) << endl;
+  char op;
+
+  do
+  {
+    cout << "Digite dois valores: ";
+    cin >> x >> y;
+
+    cout << "Digite a operação (+, -, *, /): ";
+    cin >> op;
+
+    switch (op)
+    {
+    case '+':
+      cout << "Soma: " << calcular(x, y, soma) << endl;
+      break;
+    case '-':
+      cout << "Subtração: " << calcular(x, y, subtracao) << endl;
+      break;
+    case '*':
+      cout << "Multiplicação: " << calcular(x, y, multiplicacao) << endl;
+      break;
+    case '/':
+      cout << "Divisão: " << calcular(x, y, divisao) << endl;
+      break;
+    default:
+      cout << "Operação inválida!" << endl;
+    }
+
+    cout << "Deseja continuar? (s/n) ";
+    cin >> op;
+  } while (op == 's');
+
   return 0;
 }
