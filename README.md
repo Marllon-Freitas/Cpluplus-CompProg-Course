@@ -28,3 +28,4 @@ This repository is were i am gonna put all my c++ code and exercices
 * Lab 24: Binary Files | Reading | Writing | Opening Modes
 * Lab 25: Functions with Vectors | Passing Vectors Using Element ranges
 * Lab 26: Functions with Strings and Records | Passing and Returning Data in Functions
+* Lab 27: Inline Functions and Pointers to Functions
