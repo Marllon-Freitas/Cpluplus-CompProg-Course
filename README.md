@@ -1,4 +1,4 @@
-# C++ Course
+# C++ Computer programming Course
 This repository is were i am gonna put all my c++ code and exercices
 
 ### The labs correspond to the following contents:
@@ -29,3 +29,4 @@ This repository is were i am gonna put all my c++ code and exercices
 * Lab 25: Functions with Vectors | Passing Vectors Using Element ranges
 * Lab 26: Functions with Strings and Records | Passing and Returning Data in Functions
 * Lab 27: Inline Functions and Pointers to Functions
+* Lab 28: Storage and References | Scope | Internal External Link
