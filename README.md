@@ -1,4 +1,4 @@
-# C++ Course
+# C++ Computer programming Course
 This repository is were i am gonna put all my c++ code and exercices
 
 ### The labs correspond to the following contents:
